@@ -543,6 +543,7 @@ Dragdealer.prototype = {
     }
     this.setTargetValue(target);
     this.wrapper.className = this.wrapper.className.replace(' ' + this.options.activeClass, '');
+    this.callDragStopCallback();
   },
   callAnimationCallback: function() {
     var value = this.value.current;
@@ -562,8 +563,13 @@ Dragdealer.prototype = {
     }
   },
   callDragStartCallback: function() {
-    if (typeof(this.options.dragCallback) == 'function') {
-      this.options.dragCallback.call(this, this.value.target[0], this.value.target[1]);
+    if (typeof(this.options.dragStartCallback) == 'function') {
+      this.options.dragStartCallback.call(this, this.value.target[0], this.value.target[1]);
+    }
+  },
+  callDragStopCallback: function() {
+    if (typeof(this.options.dragStopCallback) == 'function') {
+      this.options.dragStopCallback.call(this, this.value.target[0], this.value.target[1]);
     }
   },
   animateWithRequestAnimationFrame: function (time) {
