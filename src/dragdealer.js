@@ -620,8 +620,8 @@ Dragdealer.prototype = {
     }
     if (Math.abs(diff[0]) > this.valuePrecision[0] ||
         Math.abs(diff[1]) > this.valuePrecision[1]) {
-      this.value.current[0] += diff[0] * this.options.speed * this.timeOffset / 25;
-      this.value.current[1] += diff[1] * this.options.speed * this.timeOffset / 25;
+      this.value.current[0] += diff[0] * this.options.speed * this.timeOffset / this.timeOffset;
+      this.value.current[1] += diff[1] * this.options.speed * this.timeOffset / this.timeOffset;
     } else {
       this.groupCopy(this.value.current, this.value.target);
     }
